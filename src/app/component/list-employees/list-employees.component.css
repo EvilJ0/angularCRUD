@@ -1,0 +1,61 @@
+/*div{*/
+/*  display: inline-flex;*/
+/*}*/
+
+.employeeCard{
+  width: 300px;
+  height: 200px;
+  border-radius: 10px;
+  background: grey;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  /*box-shadow: 8px 0px 0px 0px;*/
+}
+
+.employeeInfo{
+  display: flex;
+  flex-direction: row;
+  height: 31px;
+}
+
+.employeeContentWrap {
+  display: flex;
+  flex: 3;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.employeeContent{
+  height: 31px;
+  width: 100px;
+}
+
+.employeeCardBundle{
+  flex:1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background: #b8b6b6;
+  padding: 5px;
+  height: 31px
+}
+
+.employeeKey{
+  font-size: 0.8em;
+  display: flex;
+  justify-content: center;
+  background: #b8b6b6;
+
+}
+
+.deleteEmployee{
+  width: 70%;
+}
+
+.deleteEmployeeWrap{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+

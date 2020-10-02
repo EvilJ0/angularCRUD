@@ -1,0 +1,75 @@
+<div class="listOfEmployees" *ngFor="let employee of this.crudService.employees$ | async">
+  <!--  {{employee | json}}-->
+  <div class="employeeCard">
+    <nav class="employeeKey"><b>key: </b> {{employee.key}}</nav>
+    <div class="name employeeInfo">
+      <span class="employeeCardBundle"><b>{{this.getKeyByValue(employee.value,employee.value.name)}} :</b></span>
+      <div class="employeeContentWrap">
+        <input class="form-control employeeContent"
+               type="text"
+               placeholder="{{employee.value.name}}"
+               [(ngModel)]="employee.value.name">
+        <button class="btn btn-primary btn-sm"
+                (click)="updateCurrentEmployee(employee.key, employee.value,employee.value.name)">update
+        </button>
+      </div>
+    </div>
+
+    <div class="name employeeInfo">
+      <span class="employeeCardBundle"><b>{{this.getKeyByValue(employee.value,employee.value.age)}} :</b></span>
+      <div class="employeeContentWrap">
+        <input class="form-control employeeContent"
+               type="number"
+               placeholder="{{employee.value.age}}"
+               [(ngModel)]="employee.value.age">
+        <button class="btn btn-primary btn-sm"
+                (click)="updateCurrentEmployee(employee.key, employee.value,employee.value.age)">update
+        </button>
+      </div>
+    </div>
+
+    <div class="name employeeInfo">
+      <span class="employeeCardBundle"><b>{{this.getKeyByValue(employee.value,employee.value.address)}} :</b></span>
+      <div class="employeeContentWrap">
+        <input class="form-control employeeContent"
+               type="text"
+               placeholder="{{employee.value.address}}"
+               [(ngModel)]="employee.value.address">
+        <button class="btn btn-primary btn-sm"
+                (click)="updateCurrentEmployee(employee.key, employee.value,employee.value.address)">update
+        </button>
+      </div>
+    </div>
+    <div class="deleteEmployeeWrap">
+      <button class="btn btn-danger btn-sm deleteEmployee"
+              (click)="deleteCurrentEmployee(employee.key)">delete
+      </button>
+    </div>
+  </div>
+</div>
+ --------
+<!--<div class="listOfEmployees" *ngFor="let employee of this.crudService.employees$ | async">-->
+<!--    &lt;!&ndash;  {{employee | json}}&ndash;&gt;-->
+<!--  <div class="employeeCard" *ngFor="let value of employee.value">-->
+<!--    1-->
+<!--    <nav class="employeeKey"><b>key: </b> {{employee.key}}</nav>-->
+<!--    <div class="name employeeInfo">-->
+<!--      <span class="employeeCardBundle"><b>{{this.getKeyByValue(employee.value,value)}} :</b></span>-->
+<!--      <div class="employeeContentWrap">-->
+<!--        <input class="form-control employeeContent"-->
+<!--               type="text"-->
+<!--               placeholder="{{value}}"-->
+<!--               [(ngModel)]="value">-->
+<!--        <button class="btn btn-primary btn-sm"-->
+<!--                (click)="updateCurrentEmployee(employee.key, employee.value,value)">update-->
+<!--        </button>-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--    <div class="deleteEmployeeWrap">-->
+<!--      <button class="btn btn-danger btn-sm deleteEmployee"-->
+<!--              (click)="deleteCurrentEmployee(employee.key)">delete-->
+<!--      </button>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
