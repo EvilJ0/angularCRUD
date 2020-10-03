@@ -1,15 +1,37 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CrudService} from '../../service/crud.service';
+import {EmployeeModel} from '../../model/employee';
+import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-list-employees',
   templateUrl: './list-employees.component.html',
   styleUrls: ['./list-employees.component.css']
 })
-export class ListEmployeesComponent {
+export class ListEmployeesComponent implements OnInit {
+  public employeeList: EmployeeModel[];
+  public employeeForm: FormGroup;
 
+  constructor( public crudService: CrudService,
+               public formBuilder: FormBuilder ) {
+  }
 
-  constructor(public crudService: CrudService) {
+  ngOnInit() {
+    this.crudService.employees$.subscribe( resp => {
+      if (resp) {
+        this.employeeList = resp;
+        this.buildForm();
+        console.log(this.employeeList);
+      }
+    });
+  }
+
+  buildForm() {
+    this.employeeForm = this.formBuilder.group({
+      [`employee-name`]: new FormControl(''),
+      [`employee-age`]: new FormControl(''),
+      [`employee-address`]: new FormControl('')
+    });
   }
 
   getKeyByValue(object, value) {
