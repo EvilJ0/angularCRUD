@@ -12,6 +12,12 @@ export class ListEmployeesComponent {
   constructor(public crudService: CrudService) {
   }
 
+  getArr(importEmployee){
+    let test =Object.values(importEmployee)
+
+    console.log(Object.values(test[1]));
+    return Object.values(test[1])
+  }
   getKeyByValue(object, value) {
     return Object.keys(object).find(key => object[key] === value);
   }
