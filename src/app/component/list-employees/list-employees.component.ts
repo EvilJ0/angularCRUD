@@ -79,7 +79,12 @@ buildProp(){
   deleteCurrentEmployee(key) {
     return this.crudService.delete(key);
   }
+testType(type){
+    if (typeof(type)==="number"){
+      return "number"
+    }return "text"
 
+}
 }
 
 
