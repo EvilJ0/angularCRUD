@@ -47,30 +47,36 @@
 <!--    </div>-->
 <!--  </div>-->
 <!--</div>-->
---------
-<div class="listOfEmployees" *ngFor="let employee of this.crudService.employees$ | async">
-  <!--  {{employee | json}}-->
-  <div class="employeeCard">
 
-    <nav class="employeeKey"><b>key: </b> {{employee.key}}</nav>
-    <div *ngFor="let section of getArr(employee)">
-      <div class="name employeeInfo">
-        <span class="employeeCardBundle"><b>{{this.getKeyByValue(employee.value, section)}} :</b></span>
+
+<ng-container *ngIf="employeeList && employeeList.length">
+  <div class="listOfEmployees" *ngFor="let employee of employeeList ">
+    <div class="employeeCard" >
+      <nav class="employeeKey"><b>key: </b> {{employee.key}}</nav>
+      <form class="name employeeInfo" *ngFor="let section of employee.value | keyvalue"
+            [formGroup]="this.employeeForm"
+            (ngSubmit)="updateCurrentEmployee (employee.key,section.key, section.value)">
+        <span class="employeeCardBundle"><b>{{this.getKeyByValue(employee.value, section.value)}} :</b></span>
         <div class="employeeContentWrap">
           <input class="form-control employeeContent"
                  type="text"
-                 placeholder="{{section}}"
-                 [(ngModel)]="employee.section">
+                 placeholder="{{section.value}}"
+                 formControlname="employee-{{section.key}}"
+
+                 >
           <button class="btn btn-primary btn-sm"
-                  (click)="updateCurrentEmployee(employee.key, employee.value,section)">update
+                  type="submit">update
           </button>
         </div>
+      </form>
+      <div class="deleteEmployeeWrap">
+        <button class="btn btn-danger btn-sm deleteEmployee"
+                (click)="deleteCurrentEmployee(employee.key)">delete
+        </button>
       </div>
     </div>
-    <div class="deleteEmployeeWrap">
-      <button class="btn btn-danger btn-sm deleteEmployee"
-              (click)="deleteCurrentEmployee(employee.key)">delete
-      </button>
-    </div>
   </div>
-</div>
+</ng-container>
+
+
+

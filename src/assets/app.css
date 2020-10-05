@@ -3,7 +3,7 @@
 body,html{
   height: 100%;
 }
-hfhfhfghhfghfgh
+
 .navbar {
   position: relative;
   display: flex;
@@ -79,8 +79,23 @@ h1 {
   padding: 10px;
 }
 
+app-list-employees {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
 
 
 
 
 
+
+.test{
+  
+}
+
+.css{
+  
+}

@@ -27,6 +27,7 @@ export class CrudService {
   }
 
   update(key, newEmployeeValue) {
+    console.log("Updating :"+key+", "+Object.values(newEmployeeValue), ", "+Object.keys(newEmployeeValue) )
      return this.fireServices.database.ref(this.url).child(key).update(newEmployeeValue)
   }
 
