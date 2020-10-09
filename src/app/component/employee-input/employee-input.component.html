@@ -1,0 +1,18 @@
+<div [formGroup]="form">
+
+  <label class="form-group containerLabel" [attr.for]="employee.id">{{employee.label}}</label>
+
+  <div [ngSwitch]="employee.controlType">
+    <input *ngSwitchCase="'textBox'"
+           [formControlName]="employee.id"
+           [id]="employee.id"
+           [type]="employee.type"
+           class="form-control containerInput">
+    <input *ngSwitchCase="'numberBox'"
+           [formControlName]="employee.id"
+           [id]="employee.id"
+           [type]="employee.type"
+           class="form-control containerInput">
+  </div>
+
+</div>
