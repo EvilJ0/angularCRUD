@@ -10,12 +10,16 @@ import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {CrudService} from './service/crud.service';
 
 import { ListEmployeesComponent } from './component/list-employees/list-employees.component';
+import { NewEmployeeComponent } from './component/new-employee/new-employee.component';
+import { EmployeeInputComponent } from './component/employee-input/employee-input.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListEmployeesComponent
+    ListEmployeesComponent,
+    NewEmployeeComponent,
+    EmployeeInputComponent
   ],
   imports: [
     BrowserModule,

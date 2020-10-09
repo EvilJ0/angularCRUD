@@ -1,34 +1,15 @@
 <div class="mainWrap">
-  <nav class="navbar navbar-dark">
+  <div class="navbarEmployee">
     Interview Crackers
-  </nav>
+  </div>
+  <div class="row">
+    <h1>Angular with firebase CRUD app</h1>
+  </div>
 
   <div class="container">
-    <div class="row">
-      <h1>Angular with firebase CRUD app</h1>
-    </div>
-    <div class="form-group">
-      <input type="text" class="form-control" placeholder="Enter Employee Name"
-             [(ngModel)]="employee.name">
-    </div>
-    <div class="form-group">
-      <input type="number" class="form-control" placeholder="Enter Employee Age"
-             [(ngModel)]="employee.age">
-    </div>
-    <div class="form-group">
-      <input type="text" class="form-control" placeholder="Enter Employee Address"
-             [(ngModel)]="employee.address">
-    </div>
-    <div class="form-group">
-      <button class="btn btn-primary"
-              [disabled]="!employee.name || !employee.age || !employee.address"
-              (click)="formSubmit()">Create Employer
-      </button>
-    </div>
-<!--    <div class="form-group">-->
-<!--      <h4 class="info"><b>{{massage}}</b></h4>-->
-<!--    </div>-->
+    <app-new-employee [employees]="employees" class="newEmployee"></app-new-employee>
   </div>
+
   <div class="listEmployeesContent">
     <app-list-employees calss="listEmployees"></app-list-employees>
   </div>

@@ -1,0 +1,35 @@
+<!--<div class="row">-->
+<!--  <h1>Angular with firebase CRUD app</h1>-->
+<!--</div>-->
+
+
+<!--<div class="form-group">-->
+<!--  <input type="text" class="form-control" placeholder="Enter Employee Name"-->
+<!--         [(ngModel)]="employee.name">-->
+<!--</div>-->
+<!--<div class="form-group">-->
+<!--  <input type="number" class="form-control" placeholder="Enter Employee Age"-->
+<!--         [(ngModel)]="employee.age">-->
+<!--</div>-->
+<!--<div class="form-group">-->
+<!--  <input type="text" class="form-control" placeholder="Enter Employee Address"-->
+<!--         [(ngModel)]="employee.address">-->
+<!--</div>-->
+<!--<div class="form-group">-->
+<!--  <button class="btn btn-primary"-->
+<!--          [disabled]="!employee.name || !employee.age || !employee.address"-->
+<!--          (click)="formSubmit()">Create Employer-->
+<!--  </button>-->
+<!--</div>-->
+
+
+<div class="inputContent">
+  <form (ngSubmit)="formSubmit()" [formGroup]="form">
+
+    <div class="form-group containerNewEmployee" *ngFor="let employee of employees">
+      <app-employee-input class="containerNewEmployee" [employee]="employee" [form]="form"></app-employee-input >
+    </div>
+
+    <input type="submit" class="btn btn-primary btnSave" value="Save">
+  </form>
+</div>

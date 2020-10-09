@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {EmployeeModel} from './model/employee';
 import {CrudService} from './service/crud.service';
 import {error} from '@angular/compiler/src/util';
+import {EmployeeService} from './service/employee.service';
 
 @Component({
   selector: 'app-root',
@@ -9,24 +10,11 @@ import {error} from '@angular/compiler/src/util';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  employee = new EmployeeModel();
-  massage: string
-
-  constructor(public crudService: CrudService) {
+  employees: EmployeeModel<any>[];
+  constructor(public employeeService: EmployeeService) {
+    this.employees=employeeService.getEmployee()
   }
 
-  formSubmit() {
-    this.crudService.createNewEmployee(this.employee).then(
-      result=>{
-        alert('Employee '+this.employee.name+' created');
-        this.employee.name = '';
-        this.employee.age = undefined;
-        this.employee.address = '';
-        console.log(result);
-        this.massage=`Employee data seve: ${result.toJSON()} `
-      }
-    ).catch(error=> console.log(error))
-  }
 
 
 }

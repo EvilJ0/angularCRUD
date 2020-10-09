@@ -10,7 +10,7 @@ import {FormBuilder, FormControl} from '@angular/forms';
 export class ListEmployeesComponent implements OnInit{
 public employeeList;
 public employeeForm;
-// public inputValue;
+
 
   constructor(public crudService: CrudService,
               public  formBuilder: FormBuilder) {}
@@ -25,36 +25,15 @@ ngOnInit(){
 }
 buildForm(){
     this.employeeForm=this.formBuilder.group(this.buildControls())
-  console.log(this.employeeForm.value)
 }
 buildControls(){
     let controls= {};
     let employeeKeys=Object.keys(this.employeeList[0].value)
-
     for (let prop of employeeKeys){
-      // console.log ("Prop :"+prop)
-      // console.log (this.employeeList[0].value.hasOwnProperty(prop))
-
         controls[`employee-${prop}`]= new FormControl([''])
-
-// console.log(controls)
     }
-  // console.log ("controls :"+Object.keys(controls))
-  // console.log ("working")
-
     return controls
-
 }
-buildProp(){
-
-}
-
-  // getArr(importEmployee){
-  //   let test =Object.values(importEmployee)
-  //
-  //   console.log(Object.values(test[1]));
-  //   return Object.values(test[1])
-  // }
 
 
   getKeyByValue(object, value) {
@@ -66,13 +45,6 @@ buildProp(){
   updateCurrentEmployee(key, currentEmployee, currentValue) {
     let updateEmployee = {};
     updateEmployee[currentEmployee] = currentValue;
-    // console.log("Employee: "+ currentEmployee)
-    // console.log("Value :"+ currentValue)
-    // console.log("Id update :"+ updateEmployeeId)
-
-    console.log (updateEmployee)
-    console.log (key)
-    console.log (this.employeeForm.value)
     return this.crudService.update(key, updateEmployee);
   }
 
