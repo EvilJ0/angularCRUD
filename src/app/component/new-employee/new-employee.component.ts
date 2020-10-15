@@ -14,6 +14,7 @@ export class NewEmployeeComponent implements OnInit {
   @Input() employees: EmployeeModel<any>[]=[]
   massage: string
   newEmployee:EmployeeModel<any>
+  employee:EmployeeModel<any>
 
   constructor(public crudService: CrudService,
               public employeeGroupService: EmployeeGroupService) {
@@ -21,6 +22,8 @@ export class NewEmployeeComponent implements OnInit {
 
   ngOnInit():void{
     this.form=this.employeeGroupService.toFormGroup(this.employees)
+
+
   }
 
   formSubmit() {
@@ -35,4 +38,7 @@ export class NewEmployeeComponent implements OnInit {
     this.form.reset()
   }
 
+  employeeSectionDelete(employee){
+    console.log(employee)
+  }
 }

@@ -1,18 +1,28 @@
-<div [formGroup]="form">
+<div [formGroup]="form" class="containerEmployee">
 
-  <label class="form-group containerLabel" [attr.for]="employee.id">{{employee.label}}</label>
+  <div class="containerLabel">
+    <div class="innerContainerLabel">
+      <div class="labelContent " [attr.for]="employee.id">{{employee.label}}</div>
+    </div>
+    <div class="innerContainerLabel">
+      <button class="btn btn-danger btn-sm "
+              (click)="employeeSectionDelete(employee.id)">
+        delete
+      </button>
+    </div>
 
-  <div [ngSwitch]="employee.controlType">
+  </div>
+  <div [ngSwitch]="employee.controlType" class="containerInputEmployee">
     <input *ngSwitchCase="'textBox'"
            [formControlName]="employee.id"
            [id]="employee.id"
            [type]="employee.type"
-           class="form-control containerInput">
+           class="form-control">
     <input *ngSwitchCase="'numberBox'"
            [formControlName]="employee.id"
            [id]="employee.id"
            [type]="employee.type"
-           class="form-control containerInput">
+           class="form-control">
   </div>
 
 </div>

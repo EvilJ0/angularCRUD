@@ -8,6 +8,7 @@ export class EmployeeModel<T> {
   order: number;
   controlType: string;
   type: string;
+  key: string;
   options: {};
   // name?: string;
   // age?: number;
@@ -20,6 +21,7 @@ export class EmployeeModel<T> {
     this.order = options.order === undefined ? 1 : options.order;
     this.controlType = options.controlType || '';
     this.options = options['options'] || [];
+
   }
 
 }

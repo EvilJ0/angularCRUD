@@ -12,6 +12,8 @@ import {CrudService} from './service/crud.service';
 import { ListEmployeesComponent } from './component/list-employees/list-employees.component';
 import { NewEmployeeComponent } from './component/new-employee/new-employee.component';
 import { EmployeeInputComponent } from './component/employee-input/employee-input.component';
+import { FirebaseListEmployeeComponent } from './component/firebase-list-employee/firebase-list-employee.component';
+import { FirebaseEmployeeComponent } from './component/firebase-employee/firebase-employee.component';
 
 
 @NgModule({
@@ -19,7 +21,9 @@ import { EmployeeInputComponent } from './component/employee-input/employee-inpu
     AppComponent,
     ListEmployeesComponent,
     NewEmployeeComponent,
-    EmployeeInputComponent
+    EmployeeInputComponent,
+    FirebaseListEmployeeComponent,
+    FirebaseEmployeeComponent
   ],
   imports: [
     BrowserModule,

@@ -8,4 +8,5 @@ export class EmployeeOptions {
   public order?: number;
   public controlType?: string;
   public options?: { key: string, value: string }[];
+  public key?: string;
 }

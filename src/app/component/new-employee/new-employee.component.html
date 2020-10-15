@@ -1,7 +1,13 @@
-<!--<div class="row">-->
-<!--  <h1>Angular with firebase CRUD app</h1>-->
-<!--</div>-->
+<div class="inputContent">
+  <form (ngSubmit)="formSubmit()" [formGroup]="form" class="formInput">
 
+    <div class="form-group containerNewEmployee" *ngFor="let employee of employees" >
+      <app-employee-input class="containerNewEmployee" [employee]="employee" [form]="form"></app-employee-input >
+    </div>
+
+    <input type="submit" class="btn btn-primary btnSave" value="Save" [disabled]="form.invalid">
+  </form>
+</div>
 
 <!--<div class="form-group">-->
 <!--  <input type="text" class="form-control" placeholder="Enter Employee Name"-->
@@ -23,13 +29,4 @@
 <!--</div>-->
 
 
-<div class="inputContent">
-  <form (ngSubmit)="formSubmit()" [formGroup]="form">
 
-    <div class="form-group containerNewEmployee" *ngFor="let employee of employees">
-      <app-employee-input class="containerNewEmployee" [employee]="employee" [form]="form"></app-employee-input >
-    </div>
-
-    <input type="submit" class="btn btn-primary btnSave" value="Save">
-  </form>
-</div>

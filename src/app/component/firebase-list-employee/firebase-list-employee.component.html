@@ -1,0 +1,11 @@
+<ng-container *ngIf="employeeList && employeeList.length" >
+
+  <div *ngFor="let fireBaseEmployee of employeeList; let i = index" [attr.id]="i">
+    <app-firebase-employee class="listOfEmployees"
+                           [fireBaseEmployee]="fireBaseEmployee"
+                           [employeeFormSection]="employeeForm[i]">
+
+    </app-firebase-employee>
+  </div>
+
+</ng-container>

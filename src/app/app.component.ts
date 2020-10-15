@@ -11,8 +11,9 @@ import {EmployeeService} from './service/employee.service';
 })
 export class AppComponent {
   employees: EmployeeModel<any>[];
-  constructor(public employeeService: EmployeeService) {
+  constructor(public employeeService: EmployeeService, public crudService:CrudService) {
     this.employees=employeeService.getEmployee()
+
   }
 
 

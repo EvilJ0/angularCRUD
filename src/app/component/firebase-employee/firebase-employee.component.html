@@ -1,0 +1,30 @@
+<form class="employeeCard form-group" [formGroup]="employeeFormSection">
+
+  <nav class="employeeKey"><b>key: </b> {{fireBaseEmployee.key}}</nav>
+
+  <div class="name employeeInfo" *ngFor="let section of fireBaseEmployee.value | keyvalue">
+
+    <span class="employeeCardBundle"><b>{{section.key}} :</b></span>
+    <div class="employeeContentWrap">
+
+      <input
+        [formControlName]="section.key"
+        [placeholder]="section.value"
+        [type]="inputType(section.key)"
+        #inputValue
+        class="employeeContent">
+    </div>
+
+    <button class="btn btn-primary btn-sm"
+            (click)="updateCurrentEmployee(fireBaseEmployee.key,section.key, inputValue.value)"
+            [disabled]=valueTest(inputValue)>update
+    </button>
+  </div>
+  <div class="deleteEmployeeWrap">
+    <button class="btn btn-danger btn-sm deleteEmployee"
+            (click)="deleteCurrentEmployee(fireBaseEmployee.key)">delete
+    </button>
+  </div>
+
+
+</form>
