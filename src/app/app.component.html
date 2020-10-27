@@ -1,16 +1,20 @@
 <div class="mainWrap">
   <div class="navbarEmployee">
     Interview Crackers
+    <button [routerLink]="'form-employee'" class="btn btn-dark">Employee Form</button>
+    <button [routerLink]="'form-employee-tree'" class="btn btn-dark">Employee Form Tree</button>
   </div>
   <div class="row">
     <h1>Angular with firebase CRUD app</h1>
+
   </div>
 
   <div class="container">
-    <app-new-employee [employees]="employees" class="newEmployee"></app-new-employee>
+    <router-outlet class="newEmployee"></router-outlet>
+
   </div>
 
   <div class="listEmployeesContent">
-    <app-firebase-list-employee ></app-firebase-list-employee>
+    <app-firebase-list-employee></app-firebase-list-employee>
   </div>
 </div>

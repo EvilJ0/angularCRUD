@@ -15,14 +15,14 @@
         class="employeeContent">
     </div>
 
-    <button class="btn btn-primary btn-sm"
+    <button class="btn btn-sm btn-dark"
             (click)="updateCurrentEmployee(fireBaseEmployee.key,section.key, inputValue.value)"
             [disabled]=valueTest(inputValue)>update
     </button>
   </div>
   <div class="deleteEmployeeWrap">
     <button class="btn btn-danger btn-sm deleteEmployee"
-            (click)="deleteCurrentEmployee(fireBaseEmployee.key)">delete
+            (click)="this.crudService.deleteProfile(fireBaseEmployee.key)">delete
     </button>
   </div>
 

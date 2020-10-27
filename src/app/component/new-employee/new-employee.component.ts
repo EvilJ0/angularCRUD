@@ -1,8 +1,9 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {EmployeeModel} from '../../model/employee';
 import {CrudService} from '../../service/crud.service';
 import {FormGroup} from '@angular/forms';
 import {EmployeeGroupService} from '../../service/employee-group.service';
+import {EmployeeService} from '../../service/employee.service';
 
 @Component({
   selector: 'app-new-employee',
@@ -11,34 +12,42 @@ import {EmployeeGroupService} from '../../service/employee-group.service';
 })
 export class NewEmployeeComponent implements OnInit {
   form: FormGroup;
-  @Input() employees: EmployeeModel<any>[]=[]
-  massage: string
-  newEmployee:EmployeeModel<any>
-  employee:EmployeeModel<any>
+  employeeFields: EmployeeModel<any>[] = [];
+  massage: string;
+  newEmployee: EmployeeModel<any>;
+  employee: EmployeeModel<any>;
 
   constructor(public crudService: CrudService,
-              public employeeGroupService: EmployeeGroupService) {
+              public employeeGroupService: EmployeeGroupService,
+              public employeeService: EmployeeService) {
+
   }
 
-  ngOnInit():void{
-    this.form=this.employeeGroupService.toFormGroup(this.employees)
+  ngOnInit() {
+    this.crudService.tree$.subscribe((response: {}) => {
+      if (response) {
+
+        this.employeeFields = this.employeeService.getEmployee(response);
+
+        this.form = this.employeeGroupService.toFormGroup(this.employeeFields);
+        // console.log(this.employeeFields)
+      }
+    });
 
 
   }
 
   formSubmit() {
-    console.log(this.form.value)
-    this.newEmployee=this.form.value
+    console.log(this.form.value);
+    this.newEmployee = this.form.value;
     this.crudService.createNewEmployee(this.newEmployee).then(
-      result=>{
+      result => {
         console.log(result);
-        this.massage=`Employee data save: ${result.toJSON()} `
+        this.massage = `Employee data save: ${result.toJSON()} `;
       }
-    ).catch(error=> console.log(error))
-    this.form.reset()
+    ).catch(error => console.log(error));
+    this.form.reset();
   }
 
-  employeeSectionDelete(employee){
-    console.log(employee)
-  }
+
 }

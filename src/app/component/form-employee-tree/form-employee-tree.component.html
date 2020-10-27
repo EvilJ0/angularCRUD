@@ -1,0 +1,60 @@
+<div class="treeWrap">
+
+  <div *ngFor="let field of employeeFields" class="treeContent">
+    <div class="iconFile" [ngStyle]="{'backgroundImage': 'url(assets/png/ico.png)',
+       'background-size': 'cover'  }">
+      <!--      <canvas #canvas width="27" height="50"></canvas>-->
+    </div>
+    <div class="fieldContend">
+      <div class="fieldId">id: {{field.key}}</div>
+      <div class="fieldType">{{typeTranslate(field.value)}}</div>
+      <div class="buttonField">
+        <button class=" deleteFileTreeFieldBtn" (click)="this.crudService.deleteField(field.key)">delete</button>
+      </div>
+    </div>
+  </div>
+  <!--  <div [class.active]="viewMode == 'add'">-->
+  <div>
+    <button class="btn-primary btn " (click)="viewMode='add'">ADD</button>
+
+  </div>
+  <div [ngSwitch]="viewMode" class="newField2">
+    <form (ngSubmit)="newField(form.value)"
+          [formGroup]="form"
+          *ngSwitchCase="'add'"
+          class="newField"
+    >
+      <!--      <input type="text" formControlName="nameField">-->
+      <div class="template">
+        <select formControlName="typeField"
+                #type
+                (click)="testType(type.value)"
+                [hidden]="selectType!='empty'"
+                class="formField ">
+          <option value="" class="form-control">choose type of the field</option>
+          <option value="EmployeeTextBox">text</option>
+          <option value="EmployeeNumberBox">number</option>
+        </select>
+      </div>
+      <div [ngSwitch]="selectType">
+        <div *ngSwitchCase="'text'" class="template">
+          <input type="text" formControlName="nameField" class="formField">
+          <div class="inputSubmit">
+            <button class="btn-primary btn" type="submit" [disabled]="form.invalid"> Add field</button>
+
+          </div>
+        </div>
+
+
+        <div *ngSwitchCase="'number'" class="template">
+          <input type="text" formControlName="nameField" class="formField">
+          <div>
+            <button class="btn-primary btn" type="submit" [disabled]="form.invalid"> Add field</button>
+          </div>
+        </div>
+      </div>
+      <button class="btn-primary btn" (click)="cancel()">Cancel</button>
+      <!--      <button class="btn-primary btn" type="submit" [disabled]="form.invalid"> Add field</button>-->
+    </form>
+  </div>
+</div>

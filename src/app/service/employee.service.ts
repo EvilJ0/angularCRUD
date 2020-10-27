@@ -4,6 +4,7 @@ import {EmployeeTextBox} from '../model/employee-textBox';
 import {EmployeeNumberBox} from '../model/employee-numberBox';
 import {CrudService} from './crud.service';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -16,32 +17,36 @@ export class EmployeeService {
   //   skill: 'EmployeeTextBox',
   //   work: 'EmployeeTextBox',
   // };
-  sections = {
-    name: 'EmployeeTextBox',
-    age: 'EmployeeNumberBox',
-    address: 'EmployeeTextBox',
-    skill: 'EmployeeTextBox',
-    // work: 'EmployeeTextBox',
-  };
+  sections;
 
   constructor(public crudService: CrudService) {
   }
 
-  getEmployee() {
-    for (let key of Object.keys(this.sections)) {
-      if (this.sections[key] == 'EmployeeTextBox') {
-        this.pushTexBox(key);
+  getEmployee(responseFromNewEmployee) {
+    console.log(responseFromNewEmployee);
+    let sectionsFireBase = {};
 
-      } else {
+    for (let i = 0; i <= Object.keys((responseFromNewEmployee)).length - 1; i++) {
+      sectionsFireBase[responseFromNewEmployee[i].key] = responseFromNewEmployee[i].value;
+    }
+    this.sections = sectionsFireBase;
+
+    // console.log('sections from file: ' + Object.values(this.sections));
+    this.employeeSections = [];
+    for (let key of Object.keys(this.sections)) {
+      // console.error(this.sections[key])
+      if (this.sections[key] === 'EmployeeNumberBox') {
         this.pushNumberBox(key);
+      } else {
+        this.pushTextBox(key);
       }
     }
-    this.crudService.createEmployeesTree(this.sections);
+    // this.crudService.createEmployeesTree(this.sections);
     return this.employeeSections;
   }
 
-  pushTexBox(value) {
-    console.log(value);
+  pushTextBox(value) {
+    // console.log(value);
     return this.employeeSections.push(new EmployeeTextBox({
         id: value,
         label: value,
@@ -51,7 +56,7 @@ export class EmployeeService {
   }
 
   pushNumberBox(value) {
-    console.log(value);
+    // console.log(value);
     return this.employeeSections.push(new EmployeeNumberBox({
         id: value,
         label: value,
@@ -60,13 +65,13 @@ export class EmployeeService {
     );
   }
 
-  deleteSection(employeeField){
-    console.error(`employeeField ${employeeField} deleted`)
-    delete this.sections[employeeField]
+  deleteSection(employeeField) {
+    console.log(`employeeField ${employeeField} deleted`);
+    delete this.sections[employeeField];
   }
 
-
 }
+
 // import {Injectable} from '@angular/core';
 // import {EmployeeModel} from '../model/employee';
 // import {EmployeeTextBox} from '../model/employee-textBox';

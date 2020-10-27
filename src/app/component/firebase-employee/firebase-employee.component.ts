@@ -9,7 +9,7 @@ import {EmployeeGroupService} from '../../service/employee-group.service';
   templateUrl: './firebase-employee.component.html',
   styleUrls: ['./firebase-employee.component.css']
 })
-export class FirebaseEmployeeComponent{
+export class FirebaseEmployeeComponent {
   constructor(public crudService: CrudService,
               public employeeGroupService: EmployeeGroupService) {
   }
@@ -26,22 +26,22 @@ export class FirebaseEmployeeComponent{
     return this.crudService.update(key, updateEmployee);
   }
 
-  deleteCurrentEmployee(key) {
-    return this.crudService.delete(key);
+
+  inputType(section) {
+
+    if (section == 'age') {
+      return 'number';
+    } else {
+      return 'text';
+    }
   }
 
-  inputType(section){
-
-    if (section== "age" ){
-      return "number"
-    } else return "text"
-  }
-
-  valueTest(input){
-    // console.log(input.value)
-    if(input.value=="" || input.value<18){
-      return true
-    } else return false
+  valueTest(input) {
+    if (input.value == '' || input.value < 18) {
+      return true;
+    } else {
+      return false
+    }
   }
 }
 

@@ -1,29 +1,32 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { AppComponent } from './app.component';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {AppComponent} from './app.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
-import {AngularFireModule} from "@angular/fire"
-import {AngularFireDatabaseModule} from "@angular/fire/database";
+import {AngularFireModule} from '@angular/fire';
+import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {environment} from '../environments/environment';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {CrudService} from './service/crud.service';
 
-import { ListEmployeesComponent } from './component/list-employees/list-employees.component';
-import { NewEmployeeComponent } from './component/new-employee/new-employee.component';
-import { EmployeeInputComponent } from './component/employee-input/employee-input.component';
-import { FirebaseListEmployeeComponent } from './component/firebase-list-employee/firebase-list-employee.component';
-import { FirebaseEmployeeComponent } from './component/firebase-employee/firebase-employee.component';
+
+import {NewEmployeeComponent} from './component/new-employee/new-employee.component';
+import {EmployeeInputComponent} from './component/employee-input/employee-input.component';
+import {FirebaseListEmployeeComponent} from './component/firebase-list-employee/firebase-list-employee.component';
+import {FirebaseEmployeeComponent} from './component/firebase-employee/firebase-employee.component';
+import {AppRoutingModule} from './app-routing.module';
+import {FormEmployeeTreeComponent} from './component/form-employee-tree/form-employee-tree.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListEmployeesComponent,
+
     NewEmployeeComponent,
     EmployeeInputComponent,
     FirebaseListEmployeeComponent,
-    FirebaseEmployeeComponent
+    FirebaseEmployeeComponent,
+    FormEmployeeTreeComponent
   ],
   imports: [
     BrowserModule,
@@ -32,11 +35,11 @@ import { FirebaseEmployeeComponent } from './component/firebase-employee/firebas
     AngularFirestoreModule,
     FormsModule,
     ReactiveFormsModule,
-
-    // AppRoutingModule,
+    AppRoutingModule,
 
   ],
   providers: [CrudService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

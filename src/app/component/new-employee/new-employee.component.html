@@ -1,8 +1,13 @@
-<div class="inputContent">
+<div  class="inputContent" *ngIf="form">
   <form (ngSubmit)="formSubmit()" [formGroup]="form" class="formInput">
 
-    <div class="form-group containerNewEmployee" *ngFor="let employee of employees" >
-      <app-employee-input class="containerNewEmployee" [employee]="employee" [form]="form"></app-employee-input >
+    <div  class="form-group containerNewEmployee" *ngFor="let employee of employeeFields" >
+      <app-employee-input class="containerNewEmployee"
+                          [employee]="employee"
+                          [form]="form"
+      ></app-employee-input >
+
+
     </div>
 
     <input type="submit" class="btn btn-primary btnSave" value="Save" [disabled]="form.invalid">

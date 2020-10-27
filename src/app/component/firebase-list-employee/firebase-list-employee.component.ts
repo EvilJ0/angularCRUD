@@ -15,7 +15,7 @@ export class FirebaseListEmployeeComponent implements OnInit {
 
 
   constructor(public crudService: CrudService,
-              public formBuilder: FormBuilder,
+
               public employeeGroupService: EmployeeGroupService) {
   }
 
@@ -24,13 +24,10 @@ export class FirebaseListEmployeeComponent implements OnInit {
       if (response) {
         this.employeeList = response;
         this.employeeForm = this.employeeGroupService.toFormGroupFB(this.employeeList);
-        // console.log('List :' + Object.values(this.employeeList[0].value) );
-        // console.log('Form values:' +  Object.values(this.employeeForm[0]));
-        // console.log('Form keys:' +  Object.keys(this.employeeForm[0]));
-        // console.log('Form controls:' +  this.employeeForm.controls);
-        // console.log('Form :' +  this.employeeForm);
+        console.log (this.employeeList)
       }
     });
+
   }
 
   updateCurrentEmployee(key, currentEmployee, currentValue) {
@@ -39,9 +36,7 @@ export class FirebaseListEmployeeComponent implements OnInit {
     return this.crudService.update(key, updateEmployee);
   }
 
-  deleteCurrentEmployee(key) {
-    return this.crudService.delete(key);
-  }
+
 
   testType(type) {
     if (typeof (type) === 'number') {
@@ -50,8 +45,4 @@ export class FirebaseListEmployeeComponent implements OnInit {
     return 'text';
   }
 
-  getControlKeys(employeeForm){
-    let controlKeys=Object.keys(this.employeeForm)
-   return controlKeys
-  }
 }

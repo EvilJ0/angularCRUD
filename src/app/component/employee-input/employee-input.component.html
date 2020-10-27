@@ -1,14 +1,9 @@
 <div [formGroup]="form" class="containerEmployee">
 
   <div class="containerLabel">
-    <div class="innerContainerLabel">
-      <div class="labelContent " [attr.for]="employee.id">{{employee.label}}</div>
-    </div>
-    <div class="innerContainerLabel">
-      <button class="btn btn-danger btn-sm "
-              (click)="employeeSectionDelete(employee.id)">
-        delete
-      </button>
+
+    <div class="labelContent "
+         [attr.for]="employee.id">{{employee.label}}
     </div>
 
   </div>
