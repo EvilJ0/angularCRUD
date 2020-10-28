@@ -4,6 +4,10 @@ import {EmployeeTextBox} from '../model/employee-textBox';
 import {EmployeeNumberBox} from '../model/employee-numberBox';
 import {CrudService} from './crud.service';
 
+const classes = {
+  EmployeeNumberBox,
+  EmployeeTextBox
+};
 
 @Injectable({
   providedIn: 'root'
@@ -30,34 +34,20 @@ export class EmployeeService {
       sectionsFireBase[responseFromNewEmployee[i].key] = responseFromNewEmployee[i].value;
     }
     this.sections = sectionsFireBase;
+    console.log(this.sections);
 
     // console.log('sections from file: ' + Object.values(this.sections));
     this.employeeSections = [];
-    for (let key of Object.keys(this.sections)) {
-      // console.error(this.sections[key])
-      if (this.sections[key] === 'EmployeeNumberBox') {
-        this.pushNumberBox(key);
-      } else {
-        this.pushTextBox(key);
-      }
+
+    for (let property in this.sections) {
+      this.pushEmployeeSections(this.sections[property].trim(), property);
     }
-    // this.crudService.createEmployeesTree(this.sections);
+    console.log(this.employeeSections);
     return this.employeeSections;
   }
 
-  pushTextBox(value) {
-    // console.log(value);
-    return this.employeeSections.push(new EmployeeTextBox({
-        id: value,
-        label: value,
-        required: true,
-      })
-    );
-  }
-
-  pushNumberBox(value) {
-    // console.log(value);
-    return this.employeeSections.push(new EmployeeNumberBox({
+  pushEmployeeSections(className, value) {
+    this.employeeSections.push(new classes[className]({
         id: value,
         label: value,
         required: true,
